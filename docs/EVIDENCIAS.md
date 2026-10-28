@@ -52,6 +52,33 @@ descargados con `gh run view <id> --log`. Los enlaces abren la ejecucion en GitH
 Si se necesitan capturas de pantalla, se pueden tomar directamente de esos enlaces:
 Actions > CI StockGuard > run > job `validar-python` > cada step.
 
+### Capturas incluidas en `docs/evidencias/`
+
+| Captura | Que muestra |
+| --- | --- |
+| `captura-01-ejecucion-exitosa.png` | Run #4 (push, `21a197d`): workflow `CI StockGuard`, job `validar-python` en verde, disparado por push |
+| `captura-02-ejecucion-fallida.png` | Run #3 (push, `55700b2`): mismo workflow en rojo tras el cambio intencional |
+| `captura-03-job-fallido-steps.png` | Detalle del job fallido: los 4 primeros steps en verde y **Ejecutar pruebas** en rojo |
+| `captura-04-job-exitoso-steps.png` | Detalle del job exitoso: los 5 steps en verde |
+| `captura-05-pull-request-checks.png` | PR #2 merged con su commit y el check asociado |
+| `captura-05b-pull-request-checks-detalle.png` | Pestana Checks del PR: `CI StockGuard` disparado por `pull_request` |
+| `captura-06-ejecucion-manual.png` | Run disparado con `workflow_dispatch` (ejecucion manual) |
+
+### Proteccion de rama aplicada
+
+Para que la condicion "si falla un check no se puede mergear" no dependa de la
+disciplina del equipo, se configuro en `main`:
+
+- **Required status check:** `validar-python` (strict: la rama debe estar actualizada).
+- Force push y borrado de `main` bloqueados.
+
+Verificacion:
+
+```bash
+gh api repos/SantiagoG1309/github-actions-stockguard/branches/main/protection
+# -> required_status_checks.contexts = ["validar-python"], strict = true
+```
+
 ---
 
 ## 3. Preguntas de analisis (seccion 17)
