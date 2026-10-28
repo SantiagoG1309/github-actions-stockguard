@@ -68,8 +68,8 @@ con `workflow_dispatch`. Corre en `ubuntu-latest` y ejecuta cinco steps:
 checkout, setup de Python 3.12, instalacion de dependencias, validacion de
 sintaxis (`compileall`) y `pytest -v`.
 
-## Evidencias
+## Evidencias y analisis
 
-Las evidencias de las ejecuciones (exitosa, fallida intencional, corregida,
-Pull Request y ejecucion manual) estan documentadas en
-[`docs/EVIDENCIAS.md`](docs/EVIDENCIAS.md).
+- Documento de evidencias y respuestas de analisis: [`docs/EVIDENCIAS.md`](docs/EVIDENCIAS.md)
+- Logs completos de cada ejecucion: [`docs/evidencias/`](docs/evidencias/)
+- Estado del CI: [Actions - CI StockGuard](https://github.com/SantiagoG1309/github-actions-stockguard/actions/workflows/ci.yml)
