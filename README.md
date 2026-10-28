@@ -23,6 +23,21 @@ provocar una falla controlada, corregirla y usar los checks de un Pull Request.
 
 Ejemplo: minimo 20 y 7 unidades disponibles -> `CRITICO`, porque 7 <= 10 (50 % de 20).
 
+### Alerta de sobrestock (mejora propia)
+
+`detectar_sobrestock(stock_actual, stock_maximo)` compara el stock con la
+capacidad maxima de bodega:
+
+| Condicion | Resultado |
+| --- | --- |
+| `stock_actual > stock_maximo` | `SOBRESTOCK` |
+| `stock_actual == stock_maximo` | `AL_LIMITE` |
+| en cualquier otro caso | `DISPONIBLE` |
+| `stock_actual < 0` o `stock_maximo <= 0` | `ValueError` |
+
+`porcentaje_inventario(stock_actual, stock_maximo)` devuelve el porcentaje de
+ocupacion redondeado a dos decimales (por ejemplo, 45 de 180 -> `25.0`).
+
 ## Estructura
 
 ```
